@@ -1,0 +1,239 @@
+.app-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+@media (max-width: 850px) {
+  .app-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.brand-title {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  color: white;
+  margin-bottom: 0.25rem;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.brand-subtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+}
+
+.timer-section {
+  flex: 1;
+  min-width: 380px;
+  max-width: 450px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  background: white;
+  border-radius: 40px;
+  box-shadow: var(--shadow-soft);
+}
+
+.mode-selector {
+  display: flex;
+  gap: 1rem;
+  background: #f1f5f9;
+  padding: 0.5rem;
+  border-radius: 20px;
+}
+
+.mode-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.mode-btn.active {
+  background: var(--accent-primary);
+  color: white;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.futuristic-timer-container {
+  width: 240px;
+  height: 240px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.timer-svg {
+  transform: rotate(-90deg);
+  overflow: visible;
+}
+
+.timer-display {
+  font-size: 7rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent-primary);
+  letter-spacing: -3px;
+  line-height: 1;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.main-control-btn {
+  padding: 1rem 3rem;
+  border-radius: 20px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  background: var(--accent-primary);
+  color: white;
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+}
+
+.main-control-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(99, 102, 241, 0.5);
+}
+
+.secondary-control-btn {
+  padding: 1rem;
+  border-radius: 50%;
+  background: #f1f5f9;
+  color: var(--text-muted);
+}
+
+.secondary-control-btn:hover {
+  background: #e2e8f0;
+  color: var(--text-main);
+}
+
+/* Task List Styles */
+.tasks-section {
+  flex: 1;
+  min-width: 380px;
+  max-width: 500px;
+  padding: 2.5rem;
+  background: white;
+  border-radius: 40px;
+  box-shadow: var(--shadow-soft);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.task-input-container {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.task-input {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.5);
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.task-input:focus {
+  background: white;
+  border-color: var(--accent-soft);
+}
+
+.add-task-btn {
+  padding: 0.8rem;
+  background: var(--text-main);
+  color: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.task-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1rem;
+  background: white;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease;
+}
+
+.task-item.completed {
+  opacity: 0.6;
+}
+
+.task-item.completed .task-text {
+  text-decoration: line-through;
+}
+
+.task-text {
+  flex: 1;
+  font-size: 0.95rem;
+}
+
+.check-btn {
+  color: var(--accent-primary);
+}
+
+.delete-btn {
+  opacity: 0;
+  color: #ef4444;
+  transition: opacity 0.2s ease;
+}
+
+.task-item:hover .delete-btn {
+  opacity: 0.6;
+}
+
+.delete-btn:hover {
+  opacity: 1 !important;
+}
