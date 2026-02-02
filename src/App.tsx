@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { Play, Pause, RotateCcw, Plus, Trash2, CheckCircle2, Circle } from 'lucide-react'
+import { Play, Pause, RotateCcw, Plus, Trash2, CheckCircle2, Circle, Sparkles, X, ArrowLeft } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import './App.css'
 
@@ -26,6 +26,7 @@ function App() {
     return savedTasks ? JSON.parse(savedTasks) : []
   })
   const [newTaskInput, setNewTaskInput] = useState('')
+  const [showModal, setShowModal] = useState(false)
 
   // Timer Logic
   useEffect(() => {
@@ -39,6 +40,7 @@ function App() {
       // Notification sound or visual alert could go here
       const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-software-interface-start-2574.mp3')
       audio.play().catch(() => console.log("Audio play blocked"))
+      setShowModal(true)
     }
     return () => clearInterval(interval)
   }, [isActive, timeLeft])
@@ -261,6 +263,51 @@ function App() {
           </AnimatePresence>
         </ul>
       </motion.div>
+
+      <AnimatePresence>
+        {showModal && (
+          <div className="modal-overlay">
+            <motion.div
+              className={`modal-content ${mode !== 'pomodoro' ? 'break' : ''}`}
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+            >
+              <div className="modal-header">
+                <button className="modal-header-btn" onClick={() => setShowModal(false)}>
+                  <ArrowLeft size={20} />
+                </button>
+                <span className="modal-title" style={{ fontSize: '1.1rem', marginBottom: 0 }}>
+                  {mode === 'pomodoro' ? 'Status: Done' : 'Status: Break'}
+                </span>
+                <button className="modal-header-btn" onClick={() => setShowModal(false)}>
+                  <X size={20} />
+                </button>
+              </div>
+
+              <div className="modal-body">
+                <div className="modal-icon-container">
+                  <Sparkles size={32} />
+                </div>
+                <h2 className="modal-title">
+                  {mode === 'pomodoro' ? '¡Sesión Finalizada!' : '¡Descanso Terminado!'}
+                </h2>
+                <p className="modal-message">
+                  {mode === 'pomodoro'
+                    ? '¡Lo lograste! Tómate un respiro, te lo has ganado.'
+                    : '¡Excelente descanso! ¿Listo para volver a la acción?'}
+                </p>
+                <button
+                  className="modal-close-btn"
+                  onClick={() => setShowModal(false)}
+                >
+                  SAVE
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
